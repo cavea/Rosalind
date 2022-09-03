@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Aug 28 12:24:17 2022
+
+@author: andy
+"""
+
+with open("mendels_first_law.txt") as f:
+    org_type_in = f.read().split()
+    
+type_count = [int(x) for x in org_type_in]
+#type_count = [2,2,2]
+tot_org = sum(type_count)
+
+dom_dom = (type_count[0]/tot_org)*(type_count[0]-1)/(tot_org-1)
+dom_het = ((type_count[0]/tot_org)*(type_count[1]/(tot_org-1))
+            + (type_count[1]/tot_org)*(type_count[0]/(tot_org-1)))
+dom_rec = ((type_count[0]/tot_org)*(type_count[2]/(tot_org-1))
+            + (type_count[2]/tot_org)*(type_count[0]/(tot_org-1)))
+
+het_het = (3/4)*((type_count[1]/tot_org)*(type_count[1]-1)/(tot_org-1))
+het_rec = (1/2)*((type_count[1]/tot_org)*(type_count[2]/(tot_org-1))
+            + (type_count[2]/tot_org)*(type_count[1]/(tot_org-1)))
+
+dom_prob = (dom_dom
+            + dom_het
+            + dom_rec
+            + het_het
+            + het_rec)
+
+print(dom_prob)

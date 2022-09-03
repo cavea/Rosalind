@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Aug 28 11:52:05 2022
+
+@author: andy
+"""
+
+import scipy.spatial.distance
+
+with open("counting_point_mutations.txt") as f:
+    genomes_in = f.read().split()
+
+genome_length = len(genomes_in[0])
+genome_array = [[nt for nt in genome] for genome in genomes_in]
+
+ham_dist_frac = scipy.spatial.distance.hamming(genome_array[0],genome_array[1])
+ham_dist = int(ham_dist_frac*genome_length)
+print(ham_dist)

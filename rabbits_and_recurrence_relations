@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Aug 28 10:20:51 2022
+
+@author: andy
+"""
+
+with open("rabbits_and_recurrence_relations.txt") as f:
+    month_pair_string = f.read().replace("\n","").split()
+    
+month = int(month_pair_string[0])
+multiple_pair = int(month_pair_string[1])
+
+
+#month = 5
+#multiple_pair = 3
+
+total_pairs = [1,1]
+for i in range(month-2):
+    next_month = total_pairs[i+1]+multiple_pair*total_pairs[i]
+    total_pairs.append(next_month)
+    
+print(month)
+print(total_pairs)
